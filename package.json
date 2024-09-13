@@ -1,0 +1,28 @@
+{
+  "name": "html-demo",
+  "version": "1.0.0",
+  "description": "不使用任何框架，只使用原生 HTML、CSS 和 JavaScript 的一些小 demo。",
+  "scripts": {
+    "serve": "serve src",
+    "build": "node build-index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lruihao/html-demo.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "demo"
+  ],
+  "author": "Lruihao (https://lruihao.cn)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lruihao/html-demo/issues"
+  },
+  "homepage": "https://github.com/Lruihao/html-demo#readme",
+  "devDependencies": {
+    "serve": "^14.2.3"
+  }
+}
