@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "不使用任何框架，只使用原生 HTML、CSS 和 JavaScript 的一些小 demo。",
   "scripts": {
+    "preserve": "npm run build",
     "serve": "serve src",
     "build": "node build-index.js"
   },
