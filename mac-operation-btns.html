@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac 窗口 🚥 样式实现</title>
+  <style>
+    .mac-style {
+      width: 500px;
+      height: 300px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      position: relative;
+      &::before {
+        background: #fc625d;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        left: 12px;
+        top: 12px;
+        position: absolute;
+        border-radius: 50%;
+        content: ' ';
+        height: 12px;
+        width: 12px;
+    }
+    }
+  </style>
+</head>
+<body>
+  <p>很多网站的代码块会使用这种风格作为装饰，不切图的情况下，一个元素配合 CSS 也能很简单的实现。</p>
+  <div class="mac-style"></div>
+</body>
+</html>
