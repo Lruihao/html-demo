@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>现代 CSS 如何实现对角线？</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        --table-border-color: #000;
+      }
+      caption {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        border: 1px solid var(--table-border-color);
+        padding: 10px;
+      }
+      th {
+        background: #f0f0f0;
+      }
+      td:empty {
+        background: linear-gradient(
+          to bottom left,
+          transparent calc(50% - 0.5px),
+          var(--table-border-color) calc(50% - 0.5px),
+          var(--table-border-color) calc(50% + 0.5px),
+          transparent calc(50% + 0.5px)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>汇总表</caption>
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>数量</th>
+          <th>单价</th>
+          <th>总价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>苹果</td>
+          <td>10</td>
+          <td>1.5</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>香蕉</td>
+          <td>20</td>
+          <td>2</td>
+          <td>40</td>
+        </tr>
+        <tr>
+          <td>橙子</td>
+          <td>30</td>
+          <td>2.5</td>
+          <td>75</td>
+        </tr>
+        <tr>
+          <td>西瓜</td>
+          <td>5</td>
+          <td>10</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>葡萄</td>
+          <td>15</td>
+          <td>?</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
