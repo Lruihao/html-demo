@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 自定义属性是为了把 vw 和 vh 转成 px */
+    @property --vw {
+      syntax: '<length>';
+      inherits: true;
+      initial-value: 100vw;
+    }
+    @property --vh {
+      syntax: '<length>';
+      inherits: true;
+      initial-value: 100vh;
+    }
+    /*
+      核心公式：
+      tan(θ) = opposite / adjacent
+      θ = arctan(opposite / adjacent)
+      tan(arctan(a)) = a
+    */
+    :root {
+      --width: tan(atan2(var(--vw), 1px));
+      --height: tan(atan2(var(--vh), 1px));
+    }
+    body::before {
+      content: counter(width) ' X ' counter(height);
+      counter-reset: width var(--width) height var(--height);
+      display: block;
+      font-size: 150px;
+      font-weight: 900;
+      position: fixed;
+      width: fit-content;
+      height: fit-content;
+      inset: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
