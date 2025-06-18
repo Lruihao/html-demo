@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态加载内容到 iframe</title>
+</head>
+<body>
+    <h1>主页面</h1>
+    <iframe id="myIframe" style="width: 500px; height: 300px;"></iframe>
+
+    <script>
+        const htmlContent = `
+            <html>
+            <head>
+                <title>嵌入的页面</title>
+            </head>
+            <body>
+                <h2>这是使用 Blob 的嵌入内容</h2>
+                <p>这段内容是动态加载的。</p>
+            </body>
+            </html>
+        `;
+
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        
+        document.getElementById('myIframe').src = url;
+    </script>
+
+    <!-- 使用 srcdoc -->
+    <iframe id="myIframeSrcDoc" style="width: 500px; height: 300px;" srcdoc="
+        <html>
+        <head>
+            <title>嵌入的页面</title>
+        </head>
+        <body>
+            <h2>这是使用 srcdoc 的嵌入内容</h2>
+            <p>这段内容是直接在 srcdoc 属性中定义的。</p>
+        </body>
+        </html>
+    "></iframe>
+</body>
+</html>

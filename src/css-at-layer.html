@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS @layer</title>
+  <style>
+    @layer components {
+      .cell-button {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+    .cell-button {
+      background-color: red; /* 覆盖组件样式 */
+    }
+  </style>
+</head>
+<body>
+  <button class="cell-button">我是按钮</button>
+</body>
+</html>
