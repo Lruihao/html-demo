@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mermaid Light/Dark Mode switching</title>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <style>
+    .diagrams-container {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .mermaid-container {
+      .mermaid-dark {
+        display: none;
+      }
+
+      [data-theme="dark"] & {
+        .mermaid {
+          display: none;
+        }
+        .mermaid-dark {
+          display: block;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.body.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'default' : 'dark';
+      document.body.dataset.theme = newTheme;
+    }
+  </script>
+  <button id="toggler">切换主题</button>
+  <div class="diagrams-container">
+    <div class="mermaid-container">
+    <pre class="mermaid">graph TD;
+    A[开始] --> B{是否完成?};
+    B -- 是 --> C[结束];
+    B -- 否 --> D[继续];
+    D --> B;
+    </pre>
+    <pre class="mermaid-dark">graph TD;
+    A[开始] --> B{是否完成?};
+    B -- 是 --> C[结束];
+    B -- 否 --> D[继续];
+    D --> B;
+    </pre>
+    </div>
+    <div class="mermaid-container">
+    <pre class="mermaid">mindmap
+    root((mindmap))
+      Origins
+        Long history
+        ::icon(fa fa-book)
+        Popularisation
+          British popular psychology author Tony Buzan
+      Research
+        On effectiveness<br/>and features
+        On Automatic creation
+          Uses
+              Creative techniques
+              Strategic planning
+              Argument mapping
+      Tools
+        Pen and paper
+        Mermaid
+    </pre>
+    <pre class="mermaid-dark">mindmap
+    root((mindmap))
+      Origins
+        Long history
+        ::icon(fa fa-book)
+        Popularisation
+          British popular psychology author Tony Buzan
+      Research
+        On effectiveness<br/>and features
+        On Automatic creation
+          Uses
+              Creative techniques
+              Strategic planning
+              Argument mapping
+      Tools
+        Pen and paper
+        Mermaid
+    </pre>
+    </div>
+  </div>
+
+  <!-- <hr>
+
+  <pre class="mermaid">zenuml
+    title Declare participant (optional)
+    Bob
+    Alice
+    Alice->Bob: Hi Bob
+    Bob->Alice: Hi Alice
+  </pre> -->
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    // import zenuml from 'https://cdn.jsdelivr.net/npm/@mermaid-js/mermaid-zenuml/dist/mermaid-zenuml.esm.min.mjs';
+    // await mermaid.registerExternalDiagrams([zenuml]);
+
+    async function loadMermaid(theme) {
+      const isDark = theme === 'dark';
+      const querySelector = isDark ? '.mermaid-dark' : '.mermaid';
+      mermaid.initialize({ startOnLoad: false, darkMode: isDark, theme });
+      // Mermaid run 函数内部会跳过 data-processed 的元素，所以这样不会重复渲染
+      await mermaid.run({ querySelector });
+    }
+
+    await loadMermaid('default')
+
+    document.getElementById('toggler').addEventListener('click', () => {
+      const currentTheme = document.body.dataset.theme || 'default';
+      const newTheme = currentTheme === 'dark' ? 'default' : 'dark';
+      document.body.dataset.theme = newTheme;
+      loadMermaid(newTheme);
+    });
+  </script>
+</body>
+</html>
