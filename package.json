@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/Lruihao/html-demo#readme",
   "devDependencies": {
-    "serve": "^14.2.4"
+    "serve": "^14.2.5"
   }
 }
